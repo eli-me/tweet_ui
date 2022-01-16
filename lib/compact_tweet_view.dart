@@ -58,7 +58,7 @@ class CompactTweetView extends StatelessWidget {
   final bool useVideoPlayer;
 
   /// If the Tweet contains a video then an initial volume can be specified with a value between 0.0 and 1.0.
-  final double? videoPlayerInitialVolume;
+  final double videoPlayerInitialVolume;
 
   /// Function used when you want a custom image tapped callback
   final OnTapImage? onTapImage;
@@ -85,7 +85,7 @@ class CompactTweetView extends StatelessWidget {
     this.quoteBackgroundColor,
     this.backgroundColor,
     required this.useVideoPlayer,
-    this.videoPlayerInitialVolume,
+    this.videoPlayerInitialVolume = 1.0,
     this.onTapImage,
     this.createdDateDisplayFormat,
     required this.videoHighQuality,
@@ -97,8 +97,7 @@ class CompactTweetView extends StatelessWidget {
     this.userScreenNameStyle = defaultCompactUserScreenNameStyle,
     this.textStyle = defaultCompactTextStyle,
     this.clickableTextStyle = defaultCompactClickableTextStyle,
-    this.retweetInformationTextStyle =
-        defaultCompactRetweetInformationNameStyle,
+    this.retweetInformationTextStyle = defaultCompactRetweetInformationNameStyle,
     this.quoteUserNameStyle = defaultQuoteUserNameStyle,
     this.quoteUserScreenNameStyle = defaultQuoteUserScreenNameStyle,
     this.quoteTextStyle = defaultQuoteTextStyle,
@@ -124,8 +123,7 @@ class CompactTweetView extends StatelessWidget {
             Padding(
               child: RetweetInformation(
                 _tweetVM,
-                retweetInformationStyle:
-                    defaultCompactRetweetInformationNameStyle,
+                retweetInformationStyle: defaultCompactRetweetInformationNameStyle,
               ),
               padding: EdgeInsets.only(left: 24),
             ),

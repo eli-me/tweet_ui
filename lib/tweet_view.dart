@@ -56,10 +56,10 @@ class TweetView extends StatelessWidget {
 
   /// If set to true a better_player will be used in a Tweet containing a video.
   /// If set to false a image placeholder will he shown and a video will be played in a new page.
-  final bool? useVideoPlayer;
+  final bool useVideoPlayer;
 
   /// If the Tweet contains a video then an initial volume can be specified with a value between 0.0 and 1.0.
-  final double? videoPlayerInitialVolume;
+  final double videoPlayerInitialVolume;
 
   /// Function used when you want a custom image tapped callback
   final OnTapImage? onTapImage;
@@ -69,7 +69,7 @@ class TweetView extends StatelessWidget {
 
   /// If set to true better_player will load the highest quality available.
   /// If set to false better_player will load the lowest quality available.
-  final bool? videoHighQuality;
+  final bool videoHighQuality;
 
   TweetView(
     this._tweetVM, {
@@ -85,11 +85,11 @@ class TweetView extends StatelessWidget {
     this.quoteBorderColor,
     this.quoteBackgroundColor,
     this.backgroundColor,
-    this.useVideoPlayer,
-    this.videoPlayerInitialVolume,
+    this.useVideoPlayer = false,
+    this.videoPlayerInitialVolume = 1.0,
     this.onTapImage,
     this.createdDateDisplayFormat,
-    this.videoHighQuality,
+    this.videoHighQuality = true,
   }); //  TweetView(this.tweetVM);
 
   TweetView.fromTweet(
@@ -147,8 +147,7 @@ class TweetView extends StatelessWidget {
                             children: <Widget>[
                               RetweetInformation(
                                 _tweetVM,
-                                retweetInformationStyle:
-                                    retweetInformationTextStyle,
+                                retweetInformationStyle: retweetInformationTextStyle,
                               ),
                               Row(
                                 children: <Widget>[
@@ -160,8 +159,7 @@ class TweetView extends StatelessWidget {
                                         _tweetVM,
                                         ViewMode.standard,
                                         userNameStyle: userNameStyle,
-                                        userScreenNameStyle:
-                                            userScreenNameStyle,
+                                        userScreenNameStyle: userScreenNameStyle,
                                       ),
                                     ),
                                   ),
@@ -191,8 +189,7 @@ class TweetView extends StatelessWidget {
                 ),
                 (_tweetVM.quotedTweet != null)
                     ? Padding(
-                        padding:
-                            EdgeInsets.only(left: 8.0, right: 8.0, top: 8.0),
+                        padding: EdgeInsets.only(left: 8.0, right: 8.0, top: 8.0),
                         child: QuoteTweetView.fromTweet(
                           _tweetVM.quotedTweet!,
                           textStyle: quoteTextStyle,

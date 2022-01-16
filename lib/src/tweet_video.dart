@@ -17,16 +17,18 @@ class TweetVideo extends StatefulWidget {
   final double? initialVolume;
   final bool autoPlay;
   final bool enableFullscreen;
-  final bool? videoHighQuality;
+  final bool videoHighQuality;
 
   @override
   _TweetVideoState createState() => _TweetVideoState();
 }
 
-class _TweetVideoState extends State<TweetVideo>
-    with AutomaticKeepAliveClientMixin {
-  late BetterPlayerConfiguration betterPlayerConfiguration;
-  late BetterPlayerController controller;
+class _TweetVideoState extends State<TweetVideo> with AutomaticKeepAliveClientMixin {
+  late final BetterPlayerConfiguration betterPlayerConfiguration;
+  late final BetterPlayerController controller;
+  late final String videoUrl = widget.videoHighQuality
+      ? widget.tweetVM.getDisplayTweet().videoUrls.values.last
+      : widget.tweetVM.getDisplayTweet().videoUrls.values.first;
 
   @override
   void initState() {
@@ -81,9 +83,6 @@ class _TweetVideoState extends State<TweetVideo>
             : Container(),
       ),
     );
-    var videoUrl = widget.videoHighQuality!
-        ? widget.tweetVM.getDisplayTweet().videoUrls.values.last
-        : widget.tweetVM.getDisplayTweet().videoUrls.values.first;
     controller = BetterPlayerController(
       betterPlayerConfiguration,
       betterPlayerDataSource: BetterPlayerDataSource.network(videoUrl,
