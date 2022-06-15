@@ -4,18 +4,19 @@ import 'package:flutter/material.dart';
 /// Builds a button that opens a [TweetPage]
 
 class OpenTweetPageButton extends StatelessWidget {
-
   final String title;
   final String tweetPath;
-  final String quoteTweetPath;
+  final String? quoteTweetPath;
 
-  const OpenTweetPageButton({Key key, this.title, this.tweetPath, this.quoteTweetPath}) : super(key: key);
+  const OpenTweetPageButton(
+      {Key? key, required this.title, required this.tweetPath, this.quoteTweetPath})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 32.0, vertical: 4.0),
-      child: RaisedButton(
+      child: ElevatedButton(
         child: Text(
           title,
           textAlign: TextAlign.start,
